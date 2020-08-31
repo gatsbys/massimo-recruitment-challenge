@@ -1,0 +1,12 @@
+$xs: 0;
+$sm: 425px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin border-shadow() {
+    border-radius: 0 !important;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(227, 227, 227, 1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(227, 227, 227, 1);
+    box-shadow: 0px 0px 5px 0px rgba(227, 227, 227, 1);
+}

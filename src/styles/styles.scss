@@ -1,0 +1,33 @@
+@import 'colors-store.scss';
+
+* {
+    font-family: Grotesque;
+    font-weight: light !important;
+
+    &:focus {
+        outline: none !important;
+    }
+}
+
+.button__main {
+    border-style: none;
+    background-color: $black;
+    color: $white;
+    font-family: "Grotesque";
+    font-size: 16px;
+    font-weight: normal;
+    padding: 10px 15px;
+    transition: 1s all;
+    min-width: 140px;
+
+    &:hover{
+        transition: 0.5s all;
+        opacity: 75%;
+    }
+}
+
+.error {
+    color: red;;
+}
+
+html, body { height: 100%; }
