@@ -4,10 +4,7 @@
             Naves
         </div>
         <div class="nav-option mr-4" [routerLink]="['/mechanic']">
-            Taller
-        </div>
-        <div class="nav-option mr-4" [routerLink]="['/space']">
-            Espacio exterior
+            Taller de naves
         </div>
     </div>
     <div class="main-top__center">
@@ -15,7 +12,7 @@
     </div>
     <div class="main-top__right">
         <div class="nav-option" [routerLink]="['/login']" *ngIf="!authService.isLogged()">Iniciar sesión</div>
-        <div class="nav-option mr-4" *ngIf="authService.isLogged()">Administrar</div>
+        <div class="nav-option mr-4" *ngIf="authService.isLogged() && authService.loggedUser().isAdmin">Administrar</div>
         <div class="nav-option mr-4" (click)="handleLogout()"  *ngIf="authService.isLogged()">Cerrar sesión</div>
         <div class="nav-greetings" *ngIf="authService.isLogged()">Bienvenido, {{authService.loggedUser().name}}</div>
     </div>

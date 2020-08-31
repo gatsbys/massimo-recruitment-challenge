@@ -16,7 +16,6 @@ export class AuthService {
     }
 
     async registerUser(registration: UserRegistrarion) {
-        console.log(registration);
         const response = await this.httpClient.put<JwtResponse>(`${environment.authUrl}/account/register`, registration).toPromise();
         this.populateAuthContainer(response.jwt)
     }
@@ -38,7 +37,7 @@ export class AuthService {
         authContainer.user.email = decodedToken.email;
         authContainer.user.name = decodedToken.name;
         authContainer.user.surname = decodedToken.surname;
-        authContainer.user.isAdmin = decodedToken.isAdmin;
+        authContainer.user.isAdmin = decodedToken.isAdmin === "true";
 
         localStorage.setItem("user", JSON.stringify(authContainer));
     }
@@ -61,7 +60,6 @@ export class AuthService {
         if (authContainer == null) {
             return null;
         }
-
         return authContainer.user;
     }
 }
