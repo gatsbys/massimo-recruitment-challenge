@@ -1,6 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -29,19 +28,17 @@ export class LoginScreenComponent implements OnInit {
     if (this.loginForm.valid) {
       try {
         await this.authenticationService.loginUser(this.loginForm.value);
+        await this.router.navigate(['starships'])
       } catch (exception) {
         this.error = true;
         this.errorMessage = exception.error;
-        return;
       }
-
-      await this.router.navigate([''])
     }
   }
 
   bootstrap() {
     this.loginForm = this.formBuilder.group({
-      email: [null, Validators.required],
+      email: [null, Validators.compose([Validators.required, Validators.email])],
       password: [null, Validators.required]
     });;
   }
