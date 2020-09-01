@@ -4,19 +4,32 @@ import { MasterLayoutComponent } from './layouts/master-layout/master-layout.com
 import { EmptyLayoutComponent } from './layouts/empty-layout/empty-layout.component';
 import { AuthGuard } from './services/guards/auth/auth.guard';
 import { LoginGuard } from './services/guards/login/login.guard';
+import { AdminGuard } from './services/guards/admin/admin.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/starships',
+    redirectTo: 'app/starships',
     pathMatch: 'full'
   },
   {
-    path: 'starships',
+    path: 'app',
     component: MasterLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-      
+      {
+        path : 'admin',
+        canActivate: [AdminGuard],
+        loadChildren: () => import('./views/admin-screen/admin-screen.module').then(m => m.AdminScreenModule)
+      },
+      {
+        path: 'starships',
+        loadChildren: () => import('./views/starships-screen/starships-screen.module').then(m => m.StarshipsScreenModule)
+      },
+      {
+        path: 'starships/detail',
+        loadChildren: () => import('./views/starship-detail-screen/starship-detail-screen.module').then(m => m.StarshipDetailScreenModule)
+      }
     ],
   },
   {
@@ -35,7 +48,7 @@ const routes: Routes = [
       {
         path : 'register',
         loadChildren: () => import('./views/register-screen/register-screen.module').then(m => m.RegisterScreenModule)
-      },
+      }
     ]
   }
 ];

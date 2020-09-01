@@ -1,0 +1,17 @@
+<div class="info">
+    <h5 class="info__header">Descubre todas las naves de Star Wars en un click!</h5>
+</div>
+<div class="header-list">
+    <div class="header-list__content">
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row"  
+    infiniteScroll [infiniteScrollDistance]="1" 
+    [infiniteScrollThrottle]="50" 
+    (scrolled)="handleScroll()">
+        <div class="col-md-6" *ngFor="let starship of shipsService.starships | async">
+            <app-card [routerLink]="['/app/starships', 'detail', starship.id]" routerLinkActive="router-link-active"  [starship]="starship"></app-card>
+        </div>
+    </div>
+</div>

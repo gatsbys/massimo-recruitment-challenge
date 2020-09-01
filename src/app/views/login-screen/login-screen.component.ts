@@ -28,7 +28,7 @@ export class LoginScreenComponent implements OnInit {
     if (this.loginForm.valid) {
       try {
         await this.authenticationService.loginUser(this.loginForm.value);
-        await this.router.navigate(['starships'])
+        await this.router.navigate(['app/starships'])
       } catch (exception) {
         this.error = true;
         this.errorMessage = exception.error;

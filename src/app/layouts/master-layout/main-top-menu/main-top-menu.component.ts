@@ -15,7 +15,7 @@ export class MainTopMenuComponent implements OnInit {
   }
 
   async handleLogout(){
-    await this.router.navigate(["/login"]);
     await this.authService.logout();
+    await this.router.navigate(["/login"]);
   }
 }

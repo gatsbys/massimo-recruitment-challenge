@@ -6,20 +6,17 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layouts/layout.module'
 import { KernelModule } from './kernel/kernel.module'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LoginScreenComponent } from './views/login-screen/login-screen.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
     FontAwesomeModule,
-    KernelModule,
-    BrowserAnimationsModule
+    KernelModule
   ],
   providers: [],
   bootstrap: [AppComponent]
