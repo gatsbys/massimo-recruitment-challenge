@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { LayoutService } from 'src/app/services/layout/layout.service';
 
 @Component({
   selector: 'app-register-screen',
@@ -17,7 +18,8 @@ export class RegisterScreenComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthService,
-    private router : Router
+    private router : Router,
+    private layoutService : LayoutService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,7 @@ export class RegisterScreenComponent implements OnInit {
       }
 
       await this.router.navigate(['app/starships'])
+      this.layoutService.forceHide();
     }
   }
 

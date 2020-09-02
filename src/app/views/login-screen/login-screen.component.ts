@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { LayoutService } from 'src/app/services/layout/layout.service';
 
 @Component({
   selector: 'app-login-screen',
@@ -17,7 +18,8 @@ export class LoginScreenComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthService,
-    private router : Router
+    private layoutService: LayoutService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class LoginScreenComponent implements OnInit {
       try {
         await this.authenticationService.loginUser(this.loginForm.value);
         await this.router.navigate(['app/starships'])
+        this.layoutService.forceHide();
       } catch (exception) {
         this.error = true;
         this.errorMessage = exception.error;
