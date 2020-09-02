@@ -19,8 +19,7 @@ export class FatalErrorInterceptorService {
   }
 
   handleError(error : HttpErrorResponse){
-    if (error.status !== 401) {
-      console.log(error);
+    if (error.status !== 401 && error.status !== 404) {
       this.router.navigate(['error']);
     }
 

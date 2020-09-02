@@ -7,7 +7,7 @@ export const environment = {
   authUrl : "https://localhost:5001",
   apiUrl: 'https://swapi.dev/api',
   cacheExpirationTime : 300000,
-  imageApi: "https://starwars-visualguide.com/assets/img/starships/"
+  imageApi: "https://starwars-visualguide.com/assets/img/"
 };
 
 /*

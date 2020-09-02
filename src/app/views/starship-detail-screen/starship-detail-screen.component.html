@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col mt-4 mb-4">
+            <p [routerLink]="['/app/starships']" class="m-0 backTo">Volver al Aparador de naves</p>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-6 mb-4">
+            <div #shipImage class="starship-image" [ngStyle]="{'background-image':  'url(' + starship.image + ')'}">
+            </div>
+            <img style="display: none;" [src]="starship.image" (error)="showNotFoundImage(shipImage)" />
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="row pr-4 pl-4">
+                <div class="col-10 mb-2 text-center">
+                    <h4>{{starship.name}}</h4>
+                    <h4><strong>By: </strong>{{starship.manufacturer}}</h4>
+                </div>
+                <div class="col-10">
+                    <p><strong>Modelo: </strong>{{starship.model}}</p>
+                    <p><strong>Clase: </strong>{{starship.starship_class}}</p>
+                    <p><strong>Coste: </strong>{{starship.cost_in_credits}} créditos galácticos</p>
+                    <p><strong>Velocidad: </strong>{{starship.max_atmosphering_speed}} km/h</p>
+                    <p><strong>Hyperdrive: </strong>{{starship.hyperdrive_rating}}</p>
+                    <p><strong>Longitud: </strong>{{starship.length}}</p>
+                    <p><strong>Cargo: </strong>{{starship.cargo_capacity }} metric tons</p>
+                    <p><strong>Tripulación mínima: </strong>{{starship.crew}}</p>
+                    <p><strong>Capacidad pasajeros: </strong>{{starship.passengers}} pax</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="movies-container" *ngIf="starship.films">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col mt-4 mb-4 text-center">
+                <h4>La puedes ver en :</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex flex-wrap justify-content-center">
+                <div class="movie-card" *ngFor="let film of starship.films">
+                    <div class="movie-card__image" #filmImage
+                        [ngStyle]="{'background-image':  'url(' + film.image + ')'}"></div>
+                    <img style="display: none;" [src]="film.image" (error)="showNotFoundImage(filmImage)" />
+                    <div class="movie-card__title">
+                        <h3><strong>{{film.title}}</strong> by <strong>{{film.director}}</strong>, <strong>{{film.release_date | date}}</strong></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col mt-4 mb-4">
+    <p [routerLink]="['/app/starships']" class="m-0 backTo">Volver al Aparador de naves</p>
+</div>

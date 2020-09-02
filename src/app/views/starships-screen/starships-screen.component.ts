@@ -1,24 +1,25 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { StarshipsService } from './starships.service';
+import { StarshipListService } from '../../services/starship-list/starship-list.service';
 
 @Component({
   selector: 'app-starships-screen',
   templateUrl: './starships-screen.component.html',
   styleUrls: ['./starships-screen.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [StarshipListService]
 })
 export class StarshipsScreenComponent implements OnInit {
 
-  constructor(public shipsService : StarshipsService) { }
+  constructor(public shipListService : StarshipListService) { }
 
   currentPage = 1;
 
   async ngOnInit() {
-    await this.shipsService.initStarships();
+    await this.shipListService.initStarshipsPage();
   }
 
   async handleScroll() {
     this.currentPage++;
-    await this.shipsService.loadStarshipsPage(this.currentPage);
+    await this.shipListService.loadStarshipsPage(this.currentPage);
   }
 }
