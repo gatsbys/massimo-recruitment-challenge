@@ -3,17 +3,17 @@
         <div class="nav-option mr-4" [routerLink]="['starships']">
             Naves
         </div>
-        <!-- <div class="nav-option mr-4" [routerLink]="['/mechanic']">
-            Taller de naves
-        </div> -->
     </div>
     <div class="main-top__center">
         <div [routerLink]="['/']" class="logo"></div>
     </div>
     <div class="main-top__right">
+        <div class="menu" (click)="layoutService.toggleMenu()"><strong>Menú</strong></div>
+
         <div class="nav-option" [routerLink]="['/login']" *ngIf="!authService.isLogged()">Iniciar sesión</div>
-        <div class="nav-option mr-4" [routerLink]="['/app/admin']" *ngIf="authService.isLogged() && authService.loggedUser().isAdmin">Administrar</div>
-        <div class="nav-option mr-4" (click)="handleLogout()"  *ngIf="authService.isLogged()">Cerrar sesión</div>
+        <div class="nav-option mr-4" [routerLink]="['/app/admin']"
+            *ngIf="authService.isLogged() && authService.loggedUser().isAdmin">Administrar</div>
+        <div class="nav-option mr-4" (click)="handleLogout()" *ngIf="authService.isLogged()">Cerrar sesión</div>
         <div class="nav-greetings" *ngIf="authService.isLogged()">Bienvenido, {{authService.loggedUser().name}}</div>
     </div>
 </div>

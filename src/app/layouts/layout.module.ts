@@ -5,12 +5,14 @@ import { EmptyLayoutComponent } from "./empty-layout/empty-layout.component"
 import { MasterLayoutComponent } from "./master-layout/master-layout.component"
 import { MainTopMenuComponent } from "./master-layout/main-top-menu/main-top-menu.component"
 import { HttpClientModule } from '@angular/common/http';
+import { SideMenuComponent } from './master-layout/side-menu/side-menu.component';
 
 @NgModule({
     declarations: [
         MasterLayoutComponent,
         EmptyLayoutComponent,
         MainTopMenuComponent,
+        SideMenuComponent,
     ],
     imports: [
         CommonModule,

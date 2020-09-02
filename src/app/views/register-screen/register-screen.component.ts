@@ -34,7 +34,7 @@ export class RegisterScreenComponent implements OnInit {
         return;
       }
 
-      await this.router.navigate(['starships'])
+      await this.router.navigate(['app/starships'])
     }
   }
 

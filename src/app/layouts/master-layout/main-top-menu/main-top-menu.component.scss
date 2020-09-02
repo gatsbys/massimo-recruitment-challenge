@@ -83,3 +83,9 @@
     transition: 0.5s all;
     color: $black;
 }
+
+.menu {
+    @media (min-width: $md) {
+        display: none;
+    }
+}

@@ -37,7 +37,8 @@ export class AuthService {
         authContainer.user.email = decodedToken.email;
         authContainer.user.name = decodedToken.name;
         authContainer.user.surname = decodedToken.surname;
-        authContainer.user.isAdmin = decodedToken.isAdmin === "true";
+        console.log(decodedToken);
+        authContainer.user.isAdmin = decodedToken.isAdmin.toUpperCase() === "TRUE";
 
         localStorage.setItem("user", JSON.stringify(authContainer));
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { LayoutService } from '../../../services/layout/layout.service'
 
 @Component({
   selector: 'app-main-top-menu',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MainTopMenuComponent implements OnInit {
 
-  constructor(public authService : AuthService, private router : Router) { }
+  constructor(public authService : AuthService, private router : Router, public layoutService : LayoutService) { }
 
   ngOnInit(): void {
   }

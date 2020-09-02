@@ -1,0 +1,18 @@
+<div class="sidebar-menu" *ngIf="layoutService.showSideMenu">
+    <div class="sidebar-menu__actions">
+        <div (click)="layoutService.forceHide()" class="sidebar-menu__actions"></div>
+    </div>
+    <div class="sidebar-menu__content">
+        <div class="row">
+            <div class="col">
+                <div class="nav-option" (click)="layoutService.forceHide()" [routerLink]="['/app/starships']">
+                    Naves</div>
+                <div *ngIf="authService.loggedUser().isAdmin" class="nav-option" (click)="layoutService.forceHide()"
+                    [routerLink]="['/app/admin']">
+                    Administración</div>
+                <div class="nav-option" (click)="handleLogout()" *ngIf="authService.isLogged()">Cerrar sesión</div>
+
+            </div>
+        </div>
+    </div>
+</div>
