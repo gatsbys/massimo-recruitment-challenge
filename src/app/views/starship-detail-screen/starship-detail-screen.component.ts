@@ -21,8 +21,9 @@ export class StarshipDetailScreenComponent implements OnInit {
     this.starship = this.shipService.starships.value.filter(s => s.id == 1)[0];
   }
 
-  showNotFoundImage(cardImage: any): void {
-    cardImage.style.backgroundImage = 'url(assets/images/no-image.png)';
+  showNotFoundImage(shipImage: any): void {
+    shipImage.style.backgroundImage = 'url(assets/images/no-image.jpg)';
+    shipImage.style.backgroundSize = "contain";
   }
 
 }

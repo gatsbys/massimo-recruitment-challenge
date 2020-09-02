@@ -12,15 +12,16 @@ import { shareReplay } from 'rxjs/operators';
 export class StarshipsService {
 
   pages$: Observable<StarshipListContainer>[] = [];
-  
   starships: BehaviorSubject<Starship[]> = new BehaviorSubject<Starship[]>(null);
-
   apiHasNoMoreResults = false;
+  resultsAreInitialized = false;
 
   constructor(private httpClient: HttpClient) { }
 
   async initStarships() {
+    if(this.resultsAreInitialized) return;
     this.starships.next((await this.getStarships(1).toPromise()).results.map(this.applyEtl));
+    this.resultsAreInitialized = true;
   }
 
   async loadStarshipsPage(page : number) {

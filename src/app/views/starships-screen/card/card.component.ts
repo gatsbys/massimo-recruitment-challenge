@@ -17,7 +17,8 @@ export class CardComponent implements OnInit {
   }
 
   handleErrorOnImageLoading(shipImage: any): void {
-    shipImage.style.backgroundImage = 'url(assets/images/no-image.png)';
+    shipImage.style.backgroundImage = 'url(assets/images/no-image.jpg)';
+    shipImage.style.backgroundSize = "contain";
   }
 
 }

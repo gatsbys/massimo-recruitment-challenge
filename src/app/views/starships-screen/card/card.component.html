@@ -1,7 +1,8 @@
-<div class="card">
-    <div #shipImage class="starship-card__image" [ngStyle]="{'background-image':  'url(' + starship.image + ')'}"></div>
+<div class="ship-card">
+    <div #shipImage class="ship-card__image" [ngStyle]="{'background-image':  'url(' + starship.image + ')'}"></div>
     <img style="display: none;" [src]="starship.image" (error)="handleErrorOnImageLoading(shipImage)" />
-    <div class="starship-card__content">
-        <h3 class="mb-0 mt-2">{{starship.name}}</h3>
+    <div class="ship-card__legend">
+        <h3 class="">{{starship.name}}</h3>
+        <h3 class="">{{starship.model}}</h3>
     </div>
 </div>
