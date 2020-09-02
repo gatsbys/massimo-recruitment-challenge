@@ -6,6 +6,8 @@ import { MasterLayoutComponent } from "./master-layout/master-layout.component"
 import { MainTopMenuComponent } from "./master-layout/main-top-menu/main-top-menu.component"
 import { HttpClientModule } from '@angular/common/http';
 import { SideMenuComponent } from './master-layout/side-menu/side-menu.component';
+import { LoadingComponent } from './loading/loading.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
     declarations: [
@@ -13,15 +15,18 @@ import { SideMenuComponent } from './master-layout/side-menu/side-menu.component
         EmptyLayoutComponent,
         MainTopMenuComponent,
         SideMenuComponent,
+        LoadingComponent,
     ],
     imports: [
         CommonModule,
         RouterModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxSpinnerModule
     ],
     exports: [
         MasterLayoutComponent,
-        EmptyLayoutComponent
+        EmptyLayoutComponent,
+        LoadingComponent
     ]
 })
 export class LayoutModule {

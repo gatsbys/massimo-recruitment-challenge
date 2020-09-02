@@ -2,10 +2,11 @@ import { NgModule } from "@angular/core";
 import { JwtService } from "./jwt/jwt.service";
 import { FatalErrorInterceptorService } from './interceptors/fatal-error/fatal-error-interceptor.service'
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptorService } from '../kernel/interceptors/loading/loading-interceptor.service'
 
 @NgModule({
     providers: [
-      JwtService, 
-      { provide: HTTP_INTERCEPTORS, useClass: FatalErrorInterceptorService, multi: true},]
+      { provide: HTTP_INTERCEPTORS, useClass: FatalErrorInterceptorService, multi: true},
+      { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptorService, multi: true},]
   })
   export class KernelModule { }

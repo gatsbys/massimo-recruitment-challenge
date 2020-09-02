@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { StarshipListContainer } from 'src/app/common/models/starship-list-container.model';
 import { Starship } from 'src/app/common/models/starship.model';
 import { HttpClient } from '@angular/common/http';
 import { Film } from 'src/app/common/models/film.model';
 import { environment } from 'src/environments/environment';
 import { shareReplay } from 'rxjs/operators';
+import { LoadingService } from '../../loading/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,14 @@ export class StarwarsDataProviderService {
   private starships$: Observable<Starship>[] = [];
   private films$: Observable<Film>[] = [];
 
+  FIRST_PAGE = 1;
+
   apiHasNoMoreResults = false;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private loadingService: LoadingService) { }
 
-  public getPage(page: number) : Promise<StarshipListContainer> {
+  public getPage(page: number): Promise<StarshipListContainer> {
+    this.handleInfiniteScroll(page);
     if (!this.pages$[page - 1]) {
       this.pages$[page - 1] = this.httpClient
         .get<StarshipListContainer>(`${environment.apiUrl}/starships/?page=${page}`).pipe(
@@ -34,7 +38,6 @@ export class StarwarsDataProviderService {
 
       }, environment.cacheExpirationTime);
     }
-
     return this.pages$[page - 1].toPromise();
   }
 
@@ -72,5 +75,9 @@ export class StarwarsDataProviderService {
     }
 
     return this.films$[id - 1].toPromise();
+  }
+
+  private handleInfiniteScroll(pageNumber: number) {
+    this.loadingService.isActive = pageNumber === this.FIRST_PAGE;
   }
 }
