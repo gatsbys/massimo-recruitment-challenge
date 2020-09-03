@@ -6,7 +6,6 @@ import { JwtService } from "../../kernel/jwt/jwt.service";
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { JwtResponse } from '../../common/models/jwt-response.model'
-import { forkJoin } from 'rxjs';
 import { User } from 'src/app/common/models/user.model';
 
 @Injectable({ providedIn: 'root' })

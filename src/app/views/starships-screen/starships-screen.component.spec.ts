@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarshipsScreenComponent } from './starships-screen.component';
+import { StarwarsDataProviderService } from 'src/app/services/data-providers/starwars/starwars-data-provider.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('StarshipsScreenComponent', () => {
   let component: StarshipsScreenComponent;
@@ -8,9 +10,15 @@ describe('StarshipsScreenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StarshipsScreenComponent ]
+      imports: [
+        HttpClientTestingModule
+      ],
+      declarations: [StarshipsScreenComponent],
+      providers: [
+        { provide: StarwarsDataProviderService }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

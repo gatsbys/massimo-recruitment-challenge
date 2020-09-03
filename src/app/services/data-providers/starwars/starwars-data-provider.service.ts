@@ -44,7 +44,7 @@ export class StarwarsDataProviderService {
   public getStarship(id: number) {
     if (!this.starships$[id - 1]) {
       this.starships$[id - 1] = this.httpClient
-        .get<Starship>(`${environment.apiUrl}/starships/${id}`).pipe(
+        .get<Starship>(`${environment.apiUrl}/starships/${id}/`).pipe(
           shareReplay(environment.cacheExpirationTime)
         );
 
@@ -62,7 +62,7 @@ export class StarwarsDataProviderService {
   public getFilm(id: number) {
     if (!this.films$[id - 1]) {
       this.films$[id - 1] = this.httpClient
-        .get<Film>(`${environment.apiUrl}/films/${id}`).pipe(
+        .get<Film>(`${environment.apiUrl}/films/${id}/`).pipe(
           shareReplay(environment.cacheExpirationTime)
         );
 

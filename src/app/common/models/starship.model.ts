@@ -17,7 +17,7 @@ export class Starship {
     MGLT: string;
     starship_class: string;
     pilots: string[];
-    films: any | Film[];
+    films: any | Film[] = [];
     created: Date | string;
     edited: Date | string; 
     url: string;

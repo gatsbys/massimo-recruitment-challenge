@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { StarshipDetailService } from '../../services/starship-detail/starship-detail.service';
 import { Starship } from 'src/app/common/models/starship.model';
-import { Film } from 'src/app/common/models/film.model';
-import { forkJoin } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-starship-detail-screen',
@@ -18,11 +17,13 @@ export class StarshipDetailScreenComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     public detailService: StarshipDetailService,
+    private titleService : Title
   ) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(async (p: Params) => {
       this.starship = await this.detailService.getStarship(p.id);
+      this.titleService.setTitle(`Massimo Dutti - Ships - ${this.starship.name}`)
     });
   }
 

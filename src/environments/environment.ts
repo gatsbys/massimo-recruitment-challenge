@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  authUrl : "https://localhost:5001",
+  authUrl : "https://massimo-challenge.azurewebsites.net/",
   apiUrl: 'https://swapi.dev/api',
   cacheExpirationTime : 300000,
   imageApi: "https://starwars-visualguide.com/assets/img/"
